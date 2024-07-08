@@ -1,0 +1,249 @@
+ create table orders(orderid varchar(10),ordername varchar(20),customerid varchar(10),customername varchar(10),orderdate date);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into orders values("cad1","powder","cd1","sudha",'2020-05-05');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into orders values("cad2","sunscreen","ab1","sudha","2020-05-05");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> update orders set customerid="ab2" where orderid="cad1";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into orders values("cad3","shampoo","cd3","ramya",'2022-05-05');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into orders values("cad4","spray","cd4","diya",'2021-06-05');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into orders values("cad5","bag","cd5","riya",'2021-09-05');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into orders values("cad6","bag","cd5","linu",'2020-09-05');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> update orders set customername="sherin" where orderid="cad2";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from orders;
++---------+-----------+------------+--------------+------------+
+| orderid | ordername | customerid | customername | orderdate  |
++---------+-----------+------------+--------------+------------+
+| cad1    | powder    | ab2        | sudha        | 2020-05-05 |
+| cad2    | sunscreen | ab1        | sherin       | 2020-05-05 |
+| cad3    | shampoo   | cd3        | ramya        | 2022-05-05 |
+| cad4    | spray     | cd4        | diya         | 2021-06-05 |
+| cad5    | bag       | cd5        | riya         | 2021-09-05 |
+| cad6    | bag       | cd5        | linu         | 2020-09-05 |
++---------+-----------+------------+--------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update orders set customerid="ab3" where orderid="cad3";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update orders set customerid="ab4" where orderid="cad4";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update orders set customerid="ab5" where orderid="cad5";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update orders set customerid="ab6" where orderid="cad6";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from orders;
++---------+-----------+------------+--------------+------------+
+| orderid | ordername | customerid | customername | orderdate  |
++---------+-----------+------------+--------------+------------+
+| cad1    | powder    | ab2        | sudha        | 2020-05-05 |
+| cad2    | sunscreen | ab1        | sherin       | 2020-05-05 |
+| cad3    | shampoo   | ab3        | ramya        | 2022-05-05 |
+| cad4    | spray     | ab4        | diya         | 2021-06-05 |
+| cad5    | bag       | ab5        | riya         | 2021-09-05 |
+| cad6    | bag       | ab6        | linu         | 2020-09-05 |
++---------+-----------+------------+--------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select orders customerid;
+ERROR 1054 (42S22): Unknown column 'orders' in 'field list'
+mysql> select customerid from orders;
++------------+
+| customerid |
++------------+
+| ab2        |
+| ab1        |
+| ab3        |
+| ab4        |
+| ab5        |
+| ab6        |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> create table product (product id int,productname varchar(10),orderid varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id int,productname varchar(10),orderid varchar(10))' at line 1
+mysql> create table product (productid int,productname varchar(10),orderid varchar(10));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into product values(1,"sunscreen","cad1");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into product values(2,"bag","cad2");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into product values(3,"shampoo","cad3");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into product values(4,"apple","cad4");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values(5,"spray","cad5");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         1 | sunscreen   | cad1    |
+|         2 | bag         | cad2    |
+|         3 | shampoo     | cad3    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from orders;
++---------+-----------+------------+--------------+------------+
+| orderid | ordername | customerid | customername | orderdate  |
++---------+-----------+------------+--------------+------------+
+| cad1    | powder    | ab2        | sudha        | 2020-05-05 |
+| cad2    | sunscreen | ab1        | sherin       | 2020-05-05 |
+| cad3    | shampoo   | ab3        | ramya        | 2022-05-05 |
+| cad4    | spray     | ab4        | diya         | 2021-06-05 |
+| cad5    | bag       | ab5        | riya         | 2021-09-05 |
+| cad6    | bag       | ab6        | linu         | 2020-09-05 |
++---------+-----------+------------+--------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select orders.orderid,orders.customerid,product.productname from orders join products on orders.orderid = product.orderid;
+ERROR 1146 (42S02): Table 'sheriin.products' doesn't exist
+mysql> select orders.orderid,orders.customerid,product.productname from orders join product on orders.orderid = product.orderid;
++---------+------------+-------------+
+| orderid | customerid | productname |
++---------+------------+-------------+
+| cad1    | ab2        | sunscreen   |
+| cad2    | ab1        | bag         |
+| cad3    | ab3        | shampoo     |
+| cad4    | ab4        | apple       |
+| cad5    | ab5        | spray       |
++---------+------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select orders.orderid,orders.customerid,product.productname from orders leftjoin product on orders.orderid = product.orderid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'product on orders.orderid = product.orderid' at line 1
+mysql> select orders.orderid,orders.customerid,product.productname from orders join product on orders.orderid = product.orderid;
++---------+------------+-------------+
+| orderid | customerid | productname |
++---------+------------+-------------+
+| cad1    | ab2        | sunscreen   |
+| cad2    | ab1        | bag         |
+| cad3    | ab3        | shampoo     |
+| cad4    | ab4        | apple       |
+| cad5    | ab5        | spray       |
++---------+------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select orders.orderid,orders.customerid,product.productname from orders left join product on orders.orderid = product.orderid;
++---------+------------+-------------+
+| orderid | customerid | productname |
++---------+------------+-------------+
+| cad1    | ab2        | sunscreen   |
+| cad2    | ab1        | bag         |
+| cad3    | ab3        | shampoo     |
+| cad4    | ab4        | apple       |
+| cad5    | ab5        | spray       |
+| cad6    | ab6        | NULL        |
++---------+------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select orders.orderid,orders.customerid,product.productname from orders right join product on orders.orderid = product.orderid;
++---------+------------+-------------+
+| orderid | customerid | productname |
++---------+------------+-------------+
+| cad1    | ab2        | sunscreen   |
+| cad2    | ab1        | bag         |
+| cad3    | ab3        | shampoo     |
+| cad4    | ab4        | apple       |
+| cad5    | ab5        | spray       |
++---------+------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select orders.orderid,orders.customerid,product.productname from orders right join product on orders.orderid > product.orderid;
++---------+------------+-------------+
+| orderid | customerid | productname |
++---------+------------+-------------+
+| cad6    | ab6        | sunscreen   |
+| cad5    | ab5        | sunscreen   |
+| cad4    | ab4        | sunscreen   |
+| cad3    | ab3        | sunscreen   |
+| cad2    | ab1        | sunscreen   |
+| cad6    | ab6        | bag         |
+| cad5    | ab5        | bag         |
+| cad4    | ab4        | bag         |
+| cad3    | ab3        | bag         |
+| cad6    | ab6        | shampoo     |
+| cad5    | ab5        | shampoo     |
+| cad4    | ab4        | shampoo     |
+| cad6    | ab6        | apple       |
+| cad5    | ab5        | apple       |
+| cad6    | ab6        | spray       |
++---------+------------+-------------+
+15 rows in set (0.00 sec)
+
+mysql> alter table orders add primary key(orderid);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc orders;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| orderid      | varchar(10) | NO   | PRI | NULL    |       |
+| ordername    | varchar(20) | YES  |     | NULL    |       |
+| customerid   | varchar(10) | YES  |     | NULL    |       |
+| customername | varchar(10) | YES  |     | NULL    |       |
+| orderdate    | date        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table product add primary key(productid);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| productid   | int         | NO   | PRI | NULL    |       |
+| productname | varchar(10) | YES  |     | NULL    |       |
+| orderid     | varchar(10) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+mysql> alter table product add FOREIGN KEY(orderid) references orders(orderid);
+Query OK, 5 rows affected (0.09 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| productid   | int         | NO   | PRI | NULL    |       |
+| productname | varchar(10) | YES  |     | NULL    |       |
+| orderid     | varchar(10) | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
