@@ -1,0 +1,159 @@
+Database changed
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         1 | sunscreen   | cad1    |
+|         2 | bag         | cad2    |
+|         3 | shampoo     | cad3    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from orders;
++---------+-----------+------------+--------------+------------+
+| orderid | ordername | customerid | customername | orderdate  |
++---------+-----------+------------+--------------+------------+
+| cad1    | powder    | ab2        | sudha        | 2020-05-05 |
+| cad2    | sunscreen | ab1        | sherin       | 2020-05-05 |
+| cad3    | shampoo   | ab3        | ramya        | 2022-05-05 |
+| cad4    | spray     | ab4        | diya         | 2021-06-05 |
+| cad5    | bag       | ab5        | riya         | 2021-09-05 |
+| cad6    | bag       | ab6        | linu         | 2020-09-05 |
++---------+-----------+------------+--------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from orders natural join product;
++---------+-----------+------------+--------------+------------+-----------+-------------+
+| orderid | ordername | customerid | customername | orderdate  | productid | productname |
++---------+-----------+------------+--------------+------------+-----------+-------------+
+| cad1    | powder    | ab2        | sudha        | 2020-05-05 |         1 | sunscreen   |
+| cad2    | sunscreen | ab1        | sherin       | 2020-05-05 |         2 | bag         |
+| cad3    | shampoo   | ab3        | ramya        | 2022-05-05 |         3 | shampoo     |
+| cad4    | spray     | ab4        | diya         | 2021-06-05 |         4 | apple       |
+| cad5    | bag       | ab5        | riya         | 2021-09-05 |         5 | spray       |
++---------+-----------+------------+--------------+------------+-----------+-------------+
+5 rows in set (0.00 sec)
+
+
+mysql> create view productview as select productid,productname from product;
+Query OK, 0 rows affected (0.04 sec)
+
+
+mysql> select * from productview;
++-----------+-------------+
+| productid | productname |
++-----------+-------------+
+|         1 | sunscreen   |
+|         2 | bag         |
+|         3 | shampoo     |
+|         4 | apple       |
+|         5 | spray       |
++-----------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select orderid,customername from orders o where exists(select * from product p where p.orderid = o.orderid);
++---------+--------------+
+| orderid | customername |
++---------+--------------+
+| cad1    | sudha        |
+| cad2    | sherin       |
+| cad3    | ramya        |
+| cad4    | diya         |
+| cad5    | riya         |
++---------+--------------+
+5 rows in set (0.04 sec)
+
+mysql> set autocommit = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         1 | sunscreen   | cad1    |
+|         2 | bag         | cad2    |
+|         3 | shampoo     | cad3    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> delete from product where productid = 1;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         2 | bag         | cad2    |
+|         3 | shampoo     | cad3    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         1 | sunscreen   | cad1    |
+|         2 | bag         | cad2    |
+|         3 | shampoo     | cad3    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> delete from product where productid = 3;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         1 | sunscreen   | cad1    |
+|         2 | bag         | cad2    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> set autocommit = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from product where productid = 1;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         2 | bag         | cad2    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from product;
++-----------+-------------+---------+
+| productid | productname | orderid |
++-----------+-------------+---------+
+|         1 | sunscreen   | cad1    |
+|         2 | bag         | cad2    |
+|         4 | apple       | cad4    |
+|         5 | spray       | cad5    |
++-----------+-------------+---------+
+4 rows in set (0.00 sec)
+
+mysql>
