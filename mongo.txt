@@ -1,0 +1,175 @@
+> use shahana
+switched to db shahana
+> use hyzam
+switched to db hyzam
+> db.hyzam.insert({"name:"fidha",age:21})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:24
+> db.hyzam.insert({"name:"fidha","age":21})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:24
+> db.hyzam.insert({"name":"fidha","age":21})
+WriteResult({ "nInserted" : 1 })
+> db.hyzam.insert({"name":"dia","age":22})
+WriteResult({ "nInserted" : 1 })
+> db.hyzam.insert({"name":"minnu","age":20})
+WriteResult({ "nInserted" : 1 })
+> db.hyzam.insert({"name":"hima","age":25})
+WriteResult({ "nInserted" : 1 })
+> db.hyzam.insert({"name":"rinna","age":23})
+WriteResult({ "nInserted" : 1 })
+> db.hyzam.find()
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "hima", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.find().pretty()
+{
+        "_id" : ObjectId("668cc32a4ece7bb4b48b209c"),
+        "name" : "fidha",
+        "age" : 21
+}
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{
+        "_id" : ObjectId("668cc34c4ece7bb4b48b209e"),
+        "name" : "minnu",
+        "age" : 20
+}
+{
+        "_id" : ObjectId("668cc3574ece7bb4b48b209f"),
+        "name" : "hima",
+        "age" : 25
+}
+{
+        "_id" : ObjectId("668cc3644ece7bb4b48b20a0"),
+        "name" : "rinna",
+        "age" : 23
+}
+> db.hyzam.find({age:{$lte:23}})
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.find({age:{$gte:23}})
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "hima", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.find({age:{$eq:23}})
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.distinct("age")
+[ 20, 21, 22, 23, 25 ]
+> db.hyzam.count()
+5
+> db.hyzam.find().sort({name:-1})
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "hima", "age" : 25 }
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+> db.hyzam.find().sort({name:1})
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "hima", "age" : 25 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.find().sort({age:-1})
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "hima", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+> db.hyzam.find().sort({age:1})
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "hima", "age" : 25 }
+> db.hyzam.update({name:"hima"},{$set:{name:"himaajal"}
+... )
+... ^C
+
+> db.hyzam.update({name:"hima"},{$set:{name:"himaajal"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.hyzam.find()
+{ "_id" : ObjectId("668cc32a4ece7bb4b48b209c"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "himaajal", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.remove({name:"fidha"})
+WriteResult({ "nRemoved" : 1 })
+> db.hyzam.find()
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "himaajal", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+> db.hyzam.find({name:{$regex:"d"}})
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+> db.hyzam.find({name:{$regex:"mi"}})
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+> db.hyzam.find().sort({name:-1}).limit(2).forEach(printjson)
+{
+        "_id" : ObjectId("668cc3644ece7bb4b48b20a0"),
+        "name" : "rinna",
+        "age" : 23
+}
+{
+        "_id" : ObjectId("668cc34c4ece7bb4b48b209e"),
+        "name" : "minnu",
+        "age" : 20
+}
+> var bulk = db.hyzam.initializeOrderedBulkOp()
+> bulk.insert({name:"nafiya",age:22})
+> bulk.insert({name:"kavya",age:25})
+> bulk.insert({name:"sanusha",age:15})
+> bulk.insert({name:"isha",age:35})
+> bulk.execute();
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 4,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.hyzam.find()
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "himaajal", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a1"), "name" : "nafiya", "age" : 22 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a2"), "name" : "kavya", "age" : 25 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a3"), "name" : "sanusha", "age" : 15 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a4"), "name" : "isha", "age" : 35 }
+> var bulk = db.hyzam.initializeUnorderedBulkOp();
+> bulk.insert({name:"nisha",age:35})
+> bulk.insert({name:"mummu",age:35})
+> bulk.insert({name:"majj",age:35})
+> bulk.insert({name:"najj",age:35})
+> bulk.execute();
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 4,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.hyzam.find()
+{ "_id" : ObjectId("668cc33c4ece7bb4b48b209d"), "name" : "dia", "age" : 22 }
+{ "_id" : ObjectId("668cc34c4ece7bb4b48b209e"), "name" : "minnu", "age" : 20 }
+{ "_id" : ObjectId("668cc3574ece7bb4b48b209f"), "name" : "himaajal", "age" : 25 }
+{ "_id" : ObjectId("668cc3644ece7bb4b48b20a0"), "name" : "rinna", "age" : 23 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a1"), "name" : "nafiya", "age" : 22 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a2"), "name" : "kavya", "age" : 25 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a3"), "name" : "sanusha", "age" : 15 }
+{ "_id" : ObjectId("668cc8ac4ece7bb4b48b20a4"), "name" : "isha", "age" : 35 }
+{ "_id" : ObjectId("668cc9804ece7bb4b48b20a5"), "name" : "nisha", "age" : 35 }
+{ "_id" : ObjectId("668cc9804ece7bb4b48b20a6"), "name" : "mummu", "age" : 35 }
+{ "_id" : ObjectId("668cc9804ece7bb4b48b20a7"), "name" : "majj", "age" : 35 }
+{ "_id" : ObjectId("668cc9804ece7bb4b48b20a8"), "name" : "najj", "age" : 35 }
+>
