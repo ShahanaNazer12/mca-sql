@@ -1,0 +1,675 @@
+Microsoft Windows [Version 10.0.22631.3737]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>mongo
+MongoDB shell version v5.0.28-rc0
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4e31d7b9-ae94-489e-ade8-edd42e3e779c") }
+MongoDB server version: 5.0.28-rc0
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2024-07-08T12:11:22.143+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+> db.createUser(
+...             { user : "s2mca",
+...               pwd : "123",
+...               roles : [{role :"userAdminDatabase",db:"admin"
+...                         }
+...                         ]
+...                         })
+uncaught exception: Error: couldn't add user: Could not find role: userAdminDatabase@admin :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DB.prototype.createUser@src/mongo/shell/db.js:1367:11
+@(shell):1:1
+> db.employee.insert({eid:"e01",name:"doe'],status:"in progress"},{pname:'mob',members:['tom','jane','mike'],status:'completed'}]} )
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:130
+> db.employee.insert({eid:"e01",name:"doe'],status:"in progress"},{pname:'mob',members:['tom','jane','mike'],status:'completed'}]} )
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:130
+> db.createUser(
+...             { user : "s3mca",
+...               pwd : "098",
+...               roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                         }
+...                         ]
+...                         } )
+Successfully added user: {
+        "user" : "s3mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.createUser(
+...             { user : "s1mca",
+...               pwd : "678",
+...               roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                        }
+...                        ]
+...                        } )
+Successfully added user: {
+        "user" : "s1mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.createUser(
+...            {
+...            user :"s6mca",
+...            pwd :"654",
+...            roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                     }
+...                     ]
+...                     } )
+Successfully added user: {
+        "user" : "s6mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.getusers()
+uncaught exception: TypeError: db.getusers is not a function :
+@(shell):1:1
+> db.getUsers()
+[
+        {
+                "_id" : "test.s1mca",
+                "userId" : UUID("3d14217c-8b6c-4341-a879-b3f9df09cd64"),
+                "user" : "s1mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s3mca",
+                "userId" : UUID("75e76a52-7460-404e-a47f-b24ac5e90ee5"),
+                "user" : "s3mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s6mca",
+                "userId" : UUID("dcf72b46-0925-417e-a18c-5982255be60a"),
+                "user" : "s6mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]
+> db.createUser(
+... { user : "s7mca",
+... pwd : "065",
+... roles :[{role : "userAdminAnyDatabase",
+... db:"admin"}]})
+Successfully added user: {
+        "user" : "s7mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.getUsers()
+[
+        {
+                "_id" : "test.s1mca",
+                "userId" : UUID("3d14217c-8b6c-4341-a879-b3f9df09cd64"),
+                "user" : "s1mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s3mca",
+                "userId" : UUID("75e76a52-7460-404e-a47f-b24ac5e90ee5"),
+                "user" : "s3mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s6mca",
+                "userId" : UUID("dcf72b46-0925-417e-a18c-5982255be60a"),
+                "user" : "s6mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s7mca",
+                "userId" : UUID("f9bb56a3-d044-499a-80f1-a7cf46df3b20"),
+                "user" : "s7mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]
+> db.getUsers()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Microsoft Windows [Version 10.0.22631.3737]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>mongo
+MongoDB shell version v5.0.28-rc0
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4e31d7b9-ae94-489e-ade8-edd42e3e779c") }
+MongoDB server version: 5.0.28-rc0
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2024-07-08T12:11:22.143+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+> db.createUser(
+...             { user : "s2mca",
+...               pwd : "123",
+...               roles : [{role :"userAdminDatabase",db:"admin"
+...                         }
+...                         ]
+...                         })
+uncaught exception: Error: couldn't add user: Could not find role: userAdminDatabase@admin :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DB.prototype.createUser@src/mongo/shell/db.js:1367:11
+@(shell):1:1
+> db.employee.insert({eid:"e01",name:"doe'],status:"in progress"},{pname:'mob',members:['tom','jane','mike'],status:'completed'}]} )
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:130
+> db.employee.insert({eid:"e01",name:"doe'],status:"in progress"},{pname:'mob',members:['tom','jane','mike'],status:'completed'}]} )
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:130
+> db.createUser(
+...             { user : "s3mca",
+...               pwd : "098",
+...               roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                         }
+...                         ]
+...                         } )
+Successfully added user: {
+        "user" : "s3mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.createUser(
+...             { user : "s1mca",
+...               pwd : "678",
+...               roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                        }
+...                        ]
+...                        } )
+Successfully added user: {
+        "user" : "s1mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.createUser(
+...            {
+...            user :"s6mca",
+...            pwd :"654",
+...            roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                     }
+...                     ]
+...                     } )
+Successfully added user: {
+        "user" : "s6mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.getusers()
+uncaught exception: TypeError: db.getusers is not a function :
+@(shell):1:1
+> db.getUsers()
+[
+        {
+                "_id" : "test.s1mca",
+                "userId" : UUID("3d14217c-8b6c-4341-a879-b3f9df09cd64"),
+                "user" : "s1mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s3mca",
+                "userId" : UUID("75e76a52-7460-404e-a47f-b24ac5e90ee5"),
+                "user" : "s3mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s6mca",
+                "userId" : UUID("dcf72b46-0925-417e-a18c-5982255be60a"),
+                "user" : "s6mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]
+> db.createUser(
+... { user : "s7mca",
+... pwd : "065",
+... roles :[{role : "userAdminAnyDatabase",
+... db:"admin"}]})
+Successfully added user: {
+        "user" : "s7mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.getUsers()
+[
+        {
+                "_id" : "test.s1mca",
+                "userId" : UUID("3d14217c-8b6c-4341-a879-b3f9df09cd64"),
+                "user" : "s1mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s3mca",
+                "userId" : UUID("75e76a52-7460-404e-a47f-b24ac5e90ee5"),
+                "user" : "s3mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s6mca",
+                "userId" : UUID("dcf72b46-0925-417e-a18c-5982255be60a"),
+                "user" : "s6mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s7mca",
+                "userId" : UUID("f9bb56a3-d044-499a-80f1-a7cf46df3b20"),
+                "user" : "s7mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]
+> db.getUsers()
+
+> db.createUser(
+...             { user : "s3mca",
+...               pwd : "098",
+...               roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                         }
+...                         ]
+...                         } )
+Successfully added user: {
+        "user" : "s3mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.createUser(
+...             { user : "s1mca",
+...               pwd : "678",
+...               roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                        }
+...                        ]
+...                        } )
+Successfully added user: {
+        "user" : "s1mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.createUser(
+...            {
+...            user :"s6mca",
+...            pwd :"654",
+...            roles : [{ role : "userAdminAnyDatabase",db:"admin"
+...                     }
+...                     ]
+...                     } )
+Successfully added user: {
+        "user" : "s6mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.getusers()
+uncaught exception: TypeError: db.getusers is not a function :
+@(shell):1:1
+> db.getUsers()
+[
+        {
+                "_id" : "test.s1mca",
+                "userId" : UUID("3d14217c-8b6c-4341-a879-b3f9df09cd64"),
+                "user" : "s1mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s3mca",
+                "userId" : UUID("75e76a52-7460-404e-a47f-b24ac5e90ee5"),
+                "user" : "s3mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s6mca",
+                "userId" : UUID("dcf72b46-0925-417e-a18c-5982255be60a"),
+                "user" : "s6mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]
+> db.createUser(
+... { user : "s7mca",
+... pwd : "065",
+... roles :[{role : "userAdminAnyDatabase",
+... db:"admin"}]})
+Successfully added user: {
+        "user" : "s7mca",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
+> db.getUsers()
+[
+        {
+                "_id" : "test.s1mca",
+                "userId" : UUID("3d14217c-8b6c-4341-a879-b3f9df09cd64"),
+                "user" : "s1mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s3mca",
+                "userId" : UUID("75e76a52-7460-404e-a47f-b24ac5e90ee5"),
+                "user" : "s3mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s6mca",
+                "userId" : UUID("dcf72b46-0925-417e-a18c-5982255be60a"),
+                "user" : "s6mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        },
+        {
+                "_id" : "test.s7mca",
+                "userId" : UUID("f9bb56a3-d044-499a-80f1-a7cf46df3b20"),
+                "user" : "s7mca",
+                "db" : "test",
+                "roles" : [
+                        {
+                                "role" : "userAdminAnyDatabase",
+                                "db" : "admin"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]
+> db.getUsers()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
