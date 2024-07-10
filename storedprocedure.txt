@@ -1,0 +1,28 @@
+mysql> select * from customer;
++------+--------+---------+-----------+----------+
+| cid  | name   | country | address   | city     |
++------+--------+---------+-----------+----------+
+| c01  | aysha  | india   | vliparamb | umalathr |
+| c02  | ria    | ks      | soudi     | karj     |
+| c03  | mia    | us      | diss      | kingj    |
+| c04  | dilna  | uk      | kngdm     | dk       |
+| c05  | ilnash | uae     | dubai     | dk       |
++------+--------+---------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> DELIMITER //
+mysql> create procedure getcustomer(IN countryname varchar(10))
+    -> Begin
+    -> select name from customer where country = countryname;
+    -> end
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call getcustomer('uk');
+    -> //
++-------+
+| name  |
++-------+
+| dilna |
++-------+
+1 row in set (0.04 sec)
